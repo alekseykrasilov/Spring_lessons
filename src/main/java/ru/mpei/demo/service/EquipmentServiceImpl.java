@@ -14,7 +14,7 @@ import java.util.Map;
 
 @Service
 @Slf4j
-public class EquipmentServiceImpl implements EquipmentService{
+public class EquipmentServiceImpl implements EquipmentService {
 
     @Autowired
     private MeasurementsRepo repo;
@@ -27,7 +27,7 @@ public class EquipmentServiceImpl implements EquipmentService{
 //        }
 //        data.get(dto.getEquipmentId()).add(dto);
         boolean res = repo.addSample(dto);
-        if (res){
+        if (res) {
             log.info("Successfully added measurement");
         } else {
             log.warn("Error during measurement adding");

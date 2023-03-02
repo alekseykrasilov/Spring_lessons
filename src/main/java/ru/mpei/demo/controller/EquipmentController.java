@@ -18,19 +18,19 @@ public class EquipmentController {
     private EquipmentService service;
 
     @PostMapping("/data/add")
-    public void addMeasurement(@RequestBody  MeasurementDTO mdto){
+    public void addMeasurement(@RequestBody MeasurementDTO mdto) {
         log.info("Received new data {}", mdto);
         service.addMeasurement(mdto);
     }
 
     @GetMapping("/equipment/get-bad-items")
-    public BadEquipmentDTO findBadEquipment(@RequestParam(name = "ssId") String substationId){
+    public BadEquipmentDTO findBadEquipment(@RequestParam(name = "ssId") String substationId) {
         return service.getBadEquipment(substationId);
     }
 
     @GetMapping("/data/test")
-    public String test(@RequestParam String name, @RequestParam(defaultValue = "2") int count){
-        return "Hello "+name+"!"+count;
+    public String test(@RequestParam String name, @RequestParam(defaultValue = "2") int count) {
+        return "Hello " + name + "!" + count;
     }
 
 }
