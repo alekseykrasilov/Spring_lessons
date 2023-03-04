@@ -1,5 +1,6 @@
 package ru.mpei.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -31,4 +32,22 @@ public class Measurement {
     @Column
     private double ic;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "equipment_id")
+    @JsonIgnore
+    private Equipment equipment;
+
+    @Override
+    public String toString() {
+        return "Measurement{" +
+                "id=" + id +
+                ", ua=" + ua +
+                ", ub=" + ub +
+                ", uc=" + uc +
+                ", ia=" + ia +
+                ", ib=" + ib +
+                ", ic=" + ic +
+                ", equipmentId" + equipment.getId() +
+                '}';
+    }
 }
