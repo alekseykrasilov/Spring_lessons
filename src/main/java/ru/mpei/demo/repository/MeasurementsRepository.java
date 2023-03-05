@@ -11,12 +11,13 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-@Transactional
+@Transactional(readOnly = true)
 public class MeasurementsRepository {
 
     @PersistenceContext
     private EntityManager em;
 
+    @Transactional
     public Measurement save(Measurement m, long equipmentId) {
         if (m.getId() == 0) {
             Equipment reference = em.getReference(Equipment.class, equipmentId);
@@ -32,6 +33,7 @@ public class MeasurementsRepository {
         return Optional.ofNullable(em.find(Measurement.class, id));
     }
 
+    @Transactional
     public boolean delete(long mId) {
         int res = em.createQuery("delete from Measurement m where m.id =:mId")
                 .setParameter("mId", mId)

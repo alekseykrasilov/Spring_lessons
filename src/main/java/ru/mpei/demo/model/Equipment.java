@@ -18,7 +18,7 @@ public class Equipment {
     @Column(nullable = false, length = 300)
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "equipment")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "equipment", cascade = CascadeType.ALL)
     private List<Measurement> measurements = new ArrayList<>();
 
     @Override
